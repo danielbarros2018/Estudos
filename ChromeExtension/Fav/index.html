@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Favs</title>
+        <!-- Linkar nosso arquivo CSS -->
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- Importar Font Red Hat Display-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="content">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a id="saveAndClose" class="nav-link active" aria-current="page" href="#">Salvar e Fechar</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tabsSaved" class="nav-link" href="#">Abas Salvas</a>
+                </li>
+            </ul>
+            <div id="panelSaveAndClose">
+                <div id="panel" class="row">
+                    <div class="col-12">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <input id="keepPinnedOpened" class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                <label for="keepPinnedOpened">
+                                    Fechar abas fixadas (Pinned)
+                                </label>
+                            </li>
+<!--                            <li class="list-group-item">-->
+<!--                                <input id="keepSoundedOpened" class="form-check-input me-1" type="checkbox" value="" aria-label="...">-->
+<!--                                <label for="keepSoundedOpened">-->
+<!--                                    Manter abas reproduzindo abertas-->
+<!--                                </label>-->
+<!--                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="botton" class="row align-items-end justify-content-end">
+                        <div class="col-4">
+                            <button id="btnCancel" type="button" class="btn btn-outline-secondary">Cancelar</button>
+                        </div>
+                        <div class="col-6">
+                            <button id="btnSave" type="button" class="btn btn-outline-success">Salvar Abas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="panelSaved" style="display: none">
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+                <p>aasdasdasdas asd asd asda dasd asd ads asd ad asd</p>
+            </div>
+
+        </div>
+        <script src="scripts/script.js"></script>
+    </body>
+</html>

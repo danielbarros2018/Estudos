@@ -1,0 +1,61 @@
+body {
+    /*width: 550px;*/
+    /*height: 500px;*/
+    overflow-x: hidden !important;
+    font-family: 'Red Hat Display', sans-serif !important;
+    border: 1px solid #535353;
+    background-color: #535353;
+    /*border-radius: 0 0 15px 15px;*/
+}
+
+#content {
+    width: 315px;
+    height: 230px;
+}
+
+h1 {
+    font-weight: bold !important;
+    padding: 0 6px;
+}
+
+i {
+    color: #FCA311;
+}
+
+#navbar {
+    /*background-color: #242423;*/
+    padding: 7px 0;
+    box-shadow: 2px 5px 3px grey;
+    font-size: large;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn-link {
+    color: #FCA311 !important;
+}
+
+.content {
+    padding: 40px 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px !important;
+    text-align: left !important;
+}
+
+.btn-favs {
+    background-color: #FCA311 !important;
+    font-weight: bolder;
+    width: 100%;
+}
+
+#botton {
+    height: 100px;
+}
+
+.nav-link.active {
+    background-color: lightgrey !important;
+}
