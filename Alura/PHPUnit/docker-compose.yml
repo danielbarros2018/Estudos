@@ -1,0 +1,32 @@
+version: "3.1"
+
+services:
+  php-fpm:
+    privileged: true
+    container_name: php
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    command: /bin/sh -c "/entrypoint.sh"
+    volumes:
+      - ./:/var/www
+    networks:
+      - alura-network
+
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - php-fpm
+    ports:
+      - "1272:80"
+    networks:
+      - alura-network
+
+networks:
+  alura-network:
+    driver: bridge
