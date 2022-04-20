@@ -6,8 +6,9 @@ let btnSave = document.querySelector("#btnSave");
 
 let cnttBody = document.querySelector("#content");
 
-let pnlSaveAndClose  = document.querySelector("#panelSaveAndClose");
-let pnlSaved  = document.querySelector("#panelSaved");
+let pnlSaveAndClose = document.querySelector("#panelSaveAndClose");
+let pnlPanelSaved = document.querySelector("#panelSaved");
+let pnlSaved = document.querySelector("#panelSaved");
 
 tabSaveAndClose.addEventListener('click', showSaveAndClose);
 tabTabsSaved.addEventListener('click', showSavedTabs);
@@ -53,48 +54,33 @@ function showSavedTabs() {
     this.classList.add('active');
     pnlSaved.style.display = "block";
     pnlSaveAndClose.style.display = "none"
-    cnttBody.style.width = "550px";
-    cnttBody.style.height = "500px";
+    cnttBody.style.width = "850px";
+    cnttBody.style.height = "700px";
 }
 
 
 
 function saveAndCloseAllTabs() {
-    var allTabs = getAllTabs();
+    let tabsPromise = new Promise(function(myResolve, myReject) {
+        let allTabs = getAllTabs();
+        myResolve(allTabs);
+        myReject("Aconteceu um erro ao identificar as abas do navegador....");
+    }).then(
+        function (infoTabs) {
+            infoTabs.forEach(function (tab) {
+                addLinkToPageSaved(tab);
+            });
+            // console.log(value);
+        },
+        function (errorMessage) {
+            alert(errorMessage);
+        }
+    );
+}
 
-    // console.log(allTabs);
-
-    allTabs.forEach(function(tab) {
-        console.log(tab.title);
-    });
-    console.log("-------------------------------");
-    // allTabs.groups.forEach(function(group) {
-    //     console.log(group.title);
-    // });
-
-
-
-    //  var dict = {};
-    //  dict = {
-    //     "title": formTitle.value,
-    //     "category": formCategory.value,
-    //     "annotations": formAnnotations.value,
-    //     "url": urlCurrent,
-    //     "icon": urlIconCurrent
-    // }
-    // var newJson = JSON.stringify(dict);
-    //
-    // chrome.storage.sync.get("STORAGE_KEY", function (result) {
-    //     if (result['STORAGE_KEY'] != undefined) {
-    //         newJson = result['STORAGE_KEY']+"#;#"+newJson;
-    //     }
-    //     chrome.storage.sync.set({"STORAGE_KEY": newJson}, function() {
-    //         alert("Salvo com sucesso!");
-    //         getFavs();
-    //         showSearchPage();
-    //     })
-    // });
-
+function addLinkToPageSaved(tab) {
+    pnlPanelSaved.innerHTML += "<p>" + tab.title + "</p>";
+    console.log(tab);
 }
 
 function getFavs() {
@@ -110,6 +96,27 @@ function closeThisWindow() {
 }
 
 async function getAllTabs() {
+    let tabs = await chrome.tabs.query({});
+    let objTabInfo = [];
+
+    tabs.forEach(function (tab) {
+        objTabInfo.push({
+            "id": tab.id,
+            "active": tab.active,
+            "favIconUrl": tab.favIconUrl,
+            "pinned": tab.pinned,
+            "select": tab.selected,
+            "status": tab.status,
+            "title": tab.title,
+            "url": tab.url,
+            "groupId": tab.groupId
+        });
+    });
+
+    return objTabInfo;
+}
+
+async function getAllTabsOLD() {
     var tabs = await chrome.tabs.query({});
     var objTabInfo = {};
 
